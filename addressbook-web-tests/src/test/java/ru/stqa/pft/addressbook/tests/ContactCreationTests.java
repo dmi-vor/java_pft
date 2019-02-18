@@ -10,7 +10,6 @@ public class ContactCreationTests extends TestBase {
     app.getContactHelper().initContactCreation();
     app.getContactHelper().fillContactForm(new ContactData("Имён", "Имёныч", "Фамильярный", "Nickname_IIF", "Dr.", "ООО \"ААА\"", "Просто живу я на улице Ленина", "+ 7 8000 90001", "+7 8000 90002", "+7 8000 90003", "+7 8000 90004", "im.im.fam@iif.io", "im.im.fam2@iif.io", "im.im.fam3@iif.io", "https://google.com"));
     app.getContactHelper().submitContactCreation();
-    app.getContactHelper().returnToHomePage();
   }
 
 }

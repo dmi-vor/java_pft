@@ -41,23 +41,26 @@ public class ContactHelper extends HelperBase {
   }
 
   public void deleteSelectedContact() {
+    acceptNextAlert = true;
     click(By.xpath("//input[@value='DELETE']"));
-    wd.switchTo().alert().accept();
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
 
+  public String closeAlertAndGetItsText() {
+    try {
+      Alert alert = wd.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
   public void selectContact() {
     click(By.name("selected[]"));
-  }
-
-  public void submitContactModification() {
-    click(By.name("update"));
-  }
-
-  public void returnToHomePage() {
-    click(By.linkText("home page"));
-  }
-
-  public void initContactModification() {
-    click(By.cssSelector("img[alt=\"EDIT\"]"));
   }
 }
